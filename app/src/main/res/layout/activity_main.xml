@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2980B9">
+
+    <WebView
+        android:id="@+id/main_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:nextFocusDown="@id/refresh_button"/>
+
+    <LinearLayout
+        android:id="@+id/button_linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="gone">
+        <Button
+            android:id="@+id/refresh_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Refresh"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:nextFocusUp="@id/main_webview"
+            android:background="@drawable/button_selector"
+            />
+
+        <Button
+            android:id="@+id/zoom_plus_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:background="@drawable/button_selector"
+            />
+
+        <Button
+            android:id="@+id/zoom_minus_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:background="@drawable/button_selector"
+            />
+
+        <Button
+            android:id="@+id/clear_cache_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear"
+            android:background="@drawable/button_selector"
+            />
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

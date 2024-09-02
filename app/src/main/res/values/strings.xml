@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PubWar</string>
+    <string name="base_url">https://pubwar.com/portal/connect/</string>
+</resources>
