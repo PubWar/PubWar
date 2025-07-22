@@ -2,11 +2,14 @@ package com.pubwar.tv;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.net.http.SslError;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.webkit.CookieManager;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebSettings;
 import android.webkit.WebStorage;
 import android.webkit.WebView;
@@ -47,15 +50,25 @@ public class MainActivity extends Activity {
 //        c575a4c179978062
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
+    @SuppressLint({"SetJavaScriptEnabled", "WebViewApiAvailability"})
     @Override
     protected void onResume() {
         super.onResume();
 //        webView.loadDataWithBaseURL(null, htmlData, "text/html", "UTF-8", null);
 
         myWebView = (WebView) findViewById(R.id.main_webview);
-        myWebView.setWebViewClient(new MyWebClient());
+
+        myWebView.setWebViewClient(new MyWebClient(){
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                // This cancels the load and shows default Android SSL error page
+                handler.cancel();  // Do NOT use handler.proceed() in production
+            }
+        });
+
         myWebView.loadUrl(url);
+
+
 
         WebView.setWebContentsDebuggingEnabled(true);
 
@@ -109,7 +122,6 @@ public class MainActivity extends Activity {
                 clearWebViewCache();
             }
         });
-
     }
 
 
